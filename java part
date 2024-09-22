@@ -1,0 +1,56 @@
+document.getElementById('add-task-btn').addEventListener('click', addTask);
+document.getElementById('task-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        addTask();
+    }
+});
+function addTask() {
+    const taskInput = document.getElementById('task-input');
+    const taskValue = taskInput.value.trim();
+    const categoryValue = document.getElementById('category-select').value;
+    const deadlineValue = document.getElementById('deadline-input').value;
+
+    if (taskValue === '' || deadlineValue === '') return;
+
+    const taskList = document.getElementById('task-list');
+
+    const newTask = document.createElement('li');
+    const taskHeader = document.createElement('div');
+    taskHeader.classList.add('task-header');
+    taskHeader.innerHTML = '<strong>${taskValue}</strong> - <em>${categoryValue}</em>';
+
+    const taskDetails = document.createElement('div');
+    taskDetails.classList.add('task-details');
+    taskDetails.innerHTML = 'Deadline: ${new Date(deadlineValue).toLocaleString()}';
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.classList.add('remove-btn');
+    removeBtn.addEventListener('click', function () {
+        newTask.remove();
+    });
+    newTask.addEventListener('click', function () {
+        newTask.classList.toggle('completed');
+    });
+
+    newTask.appendChild(taskHeader);
+    newTask.appendChild(taskDetails);
+    newTask.appendChild(removeBtn);
+    taskList.appendChild(newTask);
+
+   
+    taskInput.value = '';
+    document.getElementById('deadline-input').value = '';
+
+    setDeadlineAlert(taskValue, deadlineValue);
+}
+function setDeadlineAlert(task, deadline) {
+    const deadlineDate = new Date(deadline).getTime();
+    const now = new Date().getTime();
+    const timeDifference = deadlineDate - now;
+
+    if (timeDifference > 0) {
+        setTimeout(function () {
+            alert('Deadline Alert: Task "${task}" is due now!');
+        }, timeDifference);
+    }
+}
