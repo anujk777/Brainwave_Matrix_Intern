@@ -1,52 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>worthdoinglist - Creative To-Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   
-    <header class="main-header">
-        <h1>worthdoinglist</h1>
-    </header>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <div class="container">
-        <div class="logo-container">
-            <img src="https://i.ibb.co/KsVfmZG/DALL-E-2024-09-21-13-27-28-A-modern-minimalistic-logo-for-a-to-do-list-website-called-worthdoinglist.webp" 
-                 alt="worthdoinglist Logo" 
-                 class="logo">
-        </div>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fcefe1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-        <header>
-            <h1>Creative To-Do List</h1>
-            <p>Add your tasks below with a category and deadline:</p>
-        </header>
+.container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+.main-header {
+    background-color:#00BFFF ;
+    color:#6495ED ;
+  margin: 0
+    text-align: center;
+    padding: 20px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url('https://i.ibb.co/Nm7mPt9/photo-1529651737248-dad5e287768e.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
 
-        <main>
-            <div class="input-container">
-                <input type="text" id="task-input" placeholder="Enter a new task...">
-                <select id="category-select">
-                    <option value="Work">Work</option>
-                    <option value="Personal">Personal</option>
-                    <option value="Urgent">Urgent</option>
-                </select>
-                <input type="datetime-local" id="deadline-input">
-                <button id="add-task-btn">Add Task</button>
-            </div>
+.logo {
+    max-width: 150px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    margin-top: 25px;
+}
 
-            <ul id="task-list">
-            </ul>
-        </main>
-    </div>
-    <div class="image-section">
-        <img src="https://i.ibb.co/zHyN35W/photo-1507099985932-87a4520ed1d5.jpg" alt="Motivational Image" class="section-image">
-    </div>
-    <footer class="footer-section">
-        <p>At Worthdoinglist, we empower you to take control of your tasks and priorities. Our platform is designed to help you organize your important to-dos, ensuring that you stay focused and productive every day.</p>
-    </footer>
+header {
+    text-align: center;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+header h1 {
+    color: #4a90e2;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+#task-input {
+    flex: 2;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #4a90e2;
+    outline: none;
+}
+
+#category-select, #deadline-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #4a90e2;
+}
+
+#add-task-btn {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#add-task-btn:hover {
+    background-color: #357ab7;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+li {
+    background-color: #e9eff4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+li .task-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+li .task-details {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.remove-btn {
+    background-color: #ff6b6b;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #ff4b4b;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.footer-section {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+}
+
+.footer-section p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.image-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.section-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
